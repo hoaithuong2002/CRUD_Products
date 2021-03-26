@@ -6,12 +6,14 @@ use App\Http\Requests\CreateRequest;
 use App\Http\Requests\EditRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = DB::table('products')->paginate(4);
         return view('product.index',compact('products'));
     }
 
@@ -51,7 +53,7 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $search= $request->keyword;
-        $products = Product::where('name','LIKE',"%$search%")->get();
+        $products = DB::table('products')->where('name','LIKE',"%$search%")->paginate(4);
         return view('product.index',compact('products'));
     }
 

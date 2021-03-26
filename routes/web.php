@@ -19,4 +19,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/edit/{id}',[ProductController::class,'edit'])->name('product.edit');
 Route::post('/edit/{id}',[ProductController::class,'update'])->name('product.update');
 Route::get('/delete/{id}',[ProductController::class,'destroy'])->name('product.destroy');
-Route::post('/post',[ProductController::class,'search'])->name('product.search');
+Route::post('/search',[ProductController::class,'search'])->name('product.search');
